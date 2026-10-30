@@ -1,5 +1,5 @@
-Package: com.example.twk
-Name: twk
+Package: com.example.tweak
+Name: Tweak
 Depends: mobilesubstrate
 Version: 1.0.0
 Architecture: iphoneos-arm
