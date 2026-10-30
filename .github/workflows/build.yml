@@ -18,7 +18,7 @@ jobs:
         run: |
           mkdir -p debs
           cp packages/*.deb debs/
-          dpkg-scanpackages -m debs > Packages
+          apt-ftparchive packages debs > Packages
           gzip -9c Packages > Packages.gz
           echo "Origin: Repo" > Release
           echo "Label: Repo" >> Release
@@ -28,7 +28,6 @@ jobs:
           echo "Architectures: iphoneos-arm iphoneos-arm64" >> Release
           echo "Components: main" >> Release
           echo "Description: Repo" >> Release
-          apt-ftparchive packages debs > Packages
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
