@@ -9,7 +9,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y clang make git dpkg-dev
-          git clone --recursive [https://github.com/theos/theos.git](https://github.com/theos/theos.git) /opt/theos
+          git clone --recursive https://github.com/theos/theos.git /opt/theos
       - name: Build deb
         run: |
           export THEOS=/opt/theos
