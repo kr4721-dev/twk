@@ -1,4 +1,4 @@
-name: Build Tweak
+name: Build iOS15 Tweak
 on: [push]
 jobs:
   build:
@@ -9,23 +9,23 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build deb
         run: make package
-      - name: Setup Repo
+      - name: Prepare repository files
         run: |
           mkdir -p debs
           cp packages/*.deb debs/
           dpkg-scanpackages -m debs > Packages
           gzip -9c Packages > Packages.gz
-          echo "Origin: Repo" > Release
-          echo "Label: Repo" >> Release
+          echo "Origin: iOS15Tweak Repo" > Release
+          echo "Label: iOS15Tweak Repo" >> Release
           echo "Suite: stable" >> Release
           echo "Version: 1.0" >> Release
           echo "Codename: ios" >> Release
           echo "Architectures: iphoneos-arm iphoneos-arm64" >> Release
           echo "Components: main" >> Release
-          echo "Description: Repo" >> Release
+          echo "Description: Repository for iOS15Tweak" >> Release
           apt-ftparchive packages debs > Packages
-      - name: Commit
+      - name: Commit repository updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto build deb"
+          commit_message: "Auto build deb and update repo"
           file_pattern: "debs/*.deb Packages Packages.gz Release"
