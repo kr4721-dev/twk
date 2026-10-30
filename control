@@ -1,9 +1,9 @@
-Package: com.example.ios15tweak
-Name: iOS15Tweak
+Package: com.example.twk
+Name: twk
 Depends: mobilesubstrate
 Version: 1.0.0
 Architecture: iphoneos-arm
-Description: A simple tweak that works on iOS 15.
-Maintainer: Your Name <you@example.com>
-Author: Your Name
+Description: Tweak
+Maintainer: You
+Author: You
 Section: Tweaks
